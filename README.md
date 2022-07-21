@@ -147,7 +147,7 @@ After building, you can get TiFlash binary under `$BUILD/dbms/src/Server/tiflash
 
 TiFlash has several CMake build options to tweak for development purposes. These options SHOULD NOT be changed for production usage, as they may introduce unexpected build errors and unpredictable runtime behaviors.
 
-To tweat options, pass one or multiple `-D...=...` args when invoking CMake, for example:
+To tweak options, pass one or multiple `-D...=...` args when invoking CMake, for example:
 
 ```shell
 cmake $WORKSPACE/tiflash -DCMAKE_BUILD_TYPE=DEBUG
@@ -190,13 +190,13 @@ cmake $WORKSPACE/tiflash -DCMAKE_BUILD_TYPE=DEBUG
 
   There is another option to append extra paths for CMake to find system libraries:
 
-  - `PREBUILT_LIBS_ROOT`: Default as empty, can be specified with multiple values, seperated by `;`
+  - `PREBUILT_LIBS_ROOT`: Default as empty, can be specified with multiple values, separated by `;`
 
   Specifically, for [TiFlash proxy](https://github.com/pingcap/tidb-engine-ext):
 
   - `USE_INTERNAL_TIFLASH_PROXY=TRUE` (default) / `FALSE`
 
-    One may want to use external TiFlash proxy, e.g., if he is developing TiFlash proxy together with TiFlash, assume `$TIFLASH_PROXY_REPO` to be the path to the external TiFlash proxy repo
+    One may want to use an external TiFlash proxy, e.g., if he is developing TiFlash proxy together with TiFlash, assume `$TIFLASH_PROXY_REPO` to be the path to the external TiFlash proxy repo
 
     Usually need to be combined with `PREBUILT_LIBS_ROOT=$TIFLASH_PROXY_REPO`, and `$TIFLASH_PROXY_REPO` should have the following directory structure:
 
@@ -214,7 +214,7 @@ To run unit tests, you need to build with `-DCMAKE_BUILD_TYPE=DEBUG`:
 cd $BUILD
 cmake $WORKSPACE/tiflash -GNinja -DCMAKE_BUILD_TYPE=DEBUG
 ninja gtests_dbms       # Most TiFlash unit tests
-ninja gtests_libdaemon  # Settings related tests
+ninja gtests_libdaemon  # Settings-related tests
 ninja gtests_libcommon
 ```
 
@@ -248,7 +248,7 @@ cd $BUILD
 cmake $WORKSPACE/tiflash -GNinja -DCMAKE_BUILD_TYPE=DEBUG
 ninja tiflash
 ```
-2. Run tidb cluster locally using tiup playgroud or other tools. 
+2. Run tidb cluster locally using tiup playground or other tools. 
 ```
 tiup playground nightly --tiflash.binpath $BUILD/dbms/src/Server/tiflash
 ```
@@ -257,7 +257,7 @@ tiup playground nightly --tiflash.binpath $BUILD/dbms/src/Server/tiflash
 
 ## Run MicroBenchmark Tests
 
-To run micro benchmark tests, you need to build with -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_TESTS=ON:
+To run micro-benchmark tests, you need to build with -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_TESTS=ON:
 
 ```shell
 cd $BUILD
@@ -265,7 +265,7 @@ cmake $WORKSPACE/tiflash -GNinja -DCMAKE_BUILD_TYPE=RELEASE -DENABLE_TESTS=ON
 ninja bench_dbms       
 ```
 
-And the microbenchmark-test executables are at `$BUILD/dbms/bench_dbms`, you can run it with `./bench_dbms` or `./bench_dbms --benchmark_filter=xxx` . More usage please check with `./bench_dbms --help`.
+And the microbenchmark-test executables are at `$BUILD/dbms/bench_dbms`, you can run it with `./bench_dbms` or `./bench_dbms --benchmark_filter=xxx` . For more usage please check with `./bench_dbms --help`.
 
 ## Generate LLVM Coverage Report
 
@@ -277,7 +277,7 @@ Here is the overview of TiFlash architecture [The architecture of TiFlash's dist
 
 See [TiFlash Development Guide](/docs/DEVELOPMENT.md) and [TiFlash Design documents](/docs/design).
 
-Before submitting a pull request, please use [format-diff.py](format-diff.py) to format source code, otherwise CI build may raise error.
+Before submitting a pull request, please use [format-diff.py](format-diff.py) to format the source code, otherwise CI build may raise an error.
 
 > **NOTE**: It is required to use clang-format 12.0.0+.
 
